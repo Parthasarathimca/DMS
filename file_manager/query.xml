@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<data>
+	<queries name="file_manager">
+		<!-- File Manager Queries Starts -->
+		<query id="get_shared_dirs" name="get_shared_dirs"
+			description="To Select all Shared Directories to User">
+        	<![CDATA[select directory_id from file_manager_share where id in (SELECT share_id FROM  {0} WHERE user_id={1})]]>
+		</query>
+
+        <query id="get_shared_files" name="get_shared_files"
+			description="To Select all Shared Files to User">
+        	<![CDATA[select file_id from file_manager_share where file_id is not null and  id in (SELECT share_id FROM  {0} WHERE user_id={1})]]>
+		</query>	
+
+ 		<query id="delete_tag_query" name="delete_tag_query"
+			description="To Delete the tag entry while user rmove the tag ">
+        	<![CDATA["delete from  file_manager_directory_tags where tag_id={} and directory_id={}"]]>
+		</query>	
+
+ 		<query id="deletedFile" name="deletedFile"
+			description="To Delete the tag entry while user rmove the tag ">
+        	<![CDATA["delete from {0} where id = {1} RETURNING name"]]>
+		</query>	
+		<query id="file_related_field_query" name="file_related_field_query"
+			description="To Delete the tag entry while user rmove the tag ">
+        	<![CDATA["select id from file_manager_file where id in (select file_id from file_manager_file_tags where tag_id in (select tag_id from file_manager_file_tags where file_id = {0})) "]]>
+		</query>	
+
+
+
+	</queries>
+
+</data>

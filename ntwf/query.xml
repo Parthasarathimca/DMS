@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<data>
+	<queries name="workflow">
+		<!-- File Manager Queries Starts -->
+		<query id="get_wf_by_id" name="get_wf_by_id"
+			description="To get workflow by ID">
+        	<![CDATA[select * from ntwf_workflow where id={}]]>
+		</query>
+
+        <query id="get_shared_files" name="get_shared_files"
+			description="To Select all Shared Files to User">
+        	<![CDATA[select file_id from file_manager_share where id in (SELECT share_id FROM  {0} WHERE user_id={1})]]>
+		</query>	
+	</queries>
+
+</data>

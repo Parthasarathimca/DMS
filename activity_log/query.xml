@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<data>
+	<queries name="activity_log">
+		<!-- File Manager Queries Starts -->
+		<query id="version_count" name="verion_vount"
+			description="To count all version activities">
+        	<![CDATA[select count(activity_log_log.id)from activity_log_log inner join activity_log_activity on activity_log_log.id=activity_log_activity.log_id where  activity_log_activity.name like '%version%' and file_id={0}]]>
+		</query>
+
+<query id="version_data" name="version_data"
+			description="all version activities">
+        	<![CDATA[select activity_log_activity.id from activity_log_log inner join activity_log_activity on activity_log_log.id=activity_log_activity.log_id where  activity_log_activity.name like '%version%' and file_id={0}]]>
+		</query>
+
+        
+	</queries>
+
+</data>
